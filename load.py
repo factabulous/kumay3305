@@ -45,7 +45,7 @@ def dashboard_entry(cmdr, is_beta, entry):
                 ( entry['Latitude'], entry['Longitude']), 
                 ( this.target['lat'], this.target['lon']),
                 height = entry['Altitude'],
-                radius = this.target['radius'])
+                radius = 605) # Ick - hard-coded for Kumay for now
             this.current_distance.set(info['distance'])
             this.target_heading.set( info['heading'] )
 
