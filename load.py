@@ -49,6 +49,9 @@ def dashboard_entry(cmdr, is_beta, entry):
             this.current_distance.set(info['distance'])
             this.target_heading.set( info['heading'] )
 
+def waypoint_change():
+    print("[kumay3305] Waypoint changed")
+
 def plugin_app(parent):
     """
     Returns a frame containing the status fields we want to display to the 
@@ -64,6 +67,7 @@ def plugin_app(parent):
 
     this.target_waypoint = tk.StringVar()
     this.target_waypoint.set(this.selected_waypoint)
+    this.target_waypoint.trace("w", waypoint_change)
     tk.OptionMenu(this.status_frame, this.target_waypoint, *this.waypoints.names()).grid(row=h.row(), column=h.col(4), columnspan=4, sticky=tk.W)
     h.newrow()
     # Target Heading
