@@ -76,7 +76,8 @@
 },
 { 
   "name": "O'Donnell Settlement", 
-  "description": "A non-landable settlement at which we hope to have some fun (including "The O'Donnell Leap" and a game of "Hide and Seek"). Note that you may run into a security perimeter if you have oustanding bounties!",
+  "description": "A non-landable settlement at which we hope to have some fun (including 'The O'Donnell Leap' and a game of 'Hide and Seek'). Note that you may run into a security perimeter if you have oustanding bounties!"
+},
 { 
   "name": "The Jumble", 
   "description": "Area of dark treacherous foothills which may have to be crossed enroute to geo site #14.", 
@@ -134,7 +135,7 @@
 { 
   "name": "The South Pole", 
   "description": "The Southern Pole of Kumay",
-  "lat: "-90",
+  "lat": "-90",
   "lon": "0"
 },
 { 
