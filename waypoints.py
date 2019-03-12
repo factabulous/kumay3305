@@ -8,6 +8,11 @@ class Waypoints():
     def __init__(self, file_name = "waypoints.json"):
         with open(file_name, "rt") as waypoints_file:
             self._waypoints = json.load(waypoints_file)
+            for k in self._waypoints:
+                if 'lat' in k:
+                    k['lat'] = float(k['lat'])
+                if 'lon' in k:
+                    k['lon'] = float(k['lon'])
 
     def names(self):
         """
