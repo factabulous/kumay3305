@@ -64,7 +64,7 @@ def plugin_app(parent):
 
     this.target_waypoint = tk.StringVar()
     this.target_waypoint.set(this.selected_waypoint)
-    tk.OptionMenu(this.status_frame, this.target_waypoint, this.waypoints.names()).grid(row=h.row(), column=h.col(), sticky=tk.W)
+    tk.OptionMenu(this.status_frame, this.target_waypoint, *this.waypoints.names()).grid(row=h.row(), column=h.col(), sticky=tk.W)
     # Target Heading
     tk.Label(this.status_frame, text="Target Heading").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.target_heading = tk.StringVar()
