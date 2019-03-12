@@ -5,8 +5,8 @@ Wraps the set of waypoints we have and allows tham to be queried
 import json
 
 class Waypoints():
-    def __init__(self):
-        with open("waypoints.json", "rt") as waypoints_file:
+    def __init__(self, file_name = "waypoints.json"):
+        with open(file_name, "rt") as waypoints_file:
             self._waypoints = json.load(waypoints_file)
 
     def names(self):

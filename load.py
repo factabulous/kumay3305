@@ -17,7 +17,6 @@ from waypoints import Waypoints
 this = sys.modules[__name__]	# For holding module globals
 
 this.target = None
-this.waypoints = Waypoints()
 
 #this.debug = True if platform == 'darwin' else False
 this.NO_VALUE = "---" # Used when we don't have a value for a field
@@ -28,6 +27,8 @@ window.withdraw()
 
 def local_file(name):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), name)
+
+this.waypoints = Waypoints(local_file("waypoints.json"))
 
 def plugin_start():
     this.selected_waypoint = config.get("Kumay3305.target_waypoint")
