@@ -49,8 +49,12 @@ def dashboard_entry(cmdr, is_beta, entry):
             this.current_distance.set(info['distance'])
             this.target_heading.set( info['heading'] )
 
-def waypoint_change():
-    print("[kumay3305] Waypoint changed")
+def waypoint_change(a, b, c):
+    wp = this.waypoints.info(this.target_waypoint.get())
+    if wp:
+        this.target = wp
+    else:
+        print("[kumay3305] Failed to detect waypoint from {}".format(this.target_waypoint.get()))
 
 def plugin_app(parent):
     """
@@ -65,10 +69,11 @@ def plugin_app(parent):
         HyperlinkLabel(this.status_frame, url="https://github.com/factabulous/kumay3305", text="New Kumay3305 version available! Click here").grid(row=h.row(), column=h.col(4), columnspan=4)
         h.newrow()
 
+    tk.Label(this.status_frame, text="Waypoint").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.target_waypoint = tk.StringVar()
     this.target_waypoint.set(this.selected_waypoint)
     this.target_waypoint.trace("w", waypoint_change)
-    tk.OptionMenu(this.status_frame, this.target_waypoint, *this.waypoints.names()).grid(row=h.row(), column=h.col(4), columnspan=4, sticky=tk.W)
+    tk.OptionMenu(this.status_frame, this.target_waypoint, *this.waypoints.names()).grid(row=h.row(), column=h.col(3), columnspan=3, sticky=tk.W)
     h.newrow()
     # Target Heading
     tk.Label(this.status_frame, text="Heading").grid(row=h.row(), column=h.col(), sticky=tk.W)
