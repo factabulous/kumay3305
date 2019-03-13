@@ -32,7 +32,6 @@ this.waypoints = Waypoints(local_file("waypoints.json"))
 
 def plugin_start():
     this.selected_waypoint = config.get("Kumay3305.target_waypoint")
-    print("Read selected_waypoint as {}".format(this.selected_waypoint))
     return "Kumay3305"
 
 def plugin_stop():
@@ -47,11 +46,12 @@ def format_distance(distance_km):
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
         if hasattr(this, 'target'):
-            info = heading.target_info( 
-                ( entry['Latitude'], entry['Longitude']), 
-                ( this.target['lat'], this.target['lon']),
-                height = entry['Altitude'],
-                radius = 605) # Ick - hard-coded for Kumay for now
+            if 'lat' in this.target:
+                info = heading.target_info( 
+                    ( entry['Latitude'], entry['Longitude']), 
+                    ( this.target['lat'], this.target['lon']),
+                    height = entry['Altitude'],
+                    radius = 605) # Ick - hard-coded for Kumay for now
 
             this.current_distance.set(format_distance(info['distance']))
             this.target_heading.set( info['heading'] )
@@ -62,9 +62,7 @@ def waypoint_change(a, b, c):
         this.target = wp
         this.selected_waypoint = this.target_waypoint.get()
         config.set("Kumay3305.target_waypoint", this.selected_waypoint)
-        print("Setting selected_waypoint to {}".format(this.selected_waypoint))
-    else:
-        print("[kumay3305] Failed to detect waypoint from {}".format(this.target_waypoint.get()))
+        this.current_distance.set('---')
 
 def plugin_app(parent):
     """
