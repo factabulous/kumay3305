@@ -38,6 +38,11 @@ def plugin_start():
 def plugin_stop():
     window.destroy()
 
+def format_distance(distance_km):
+    if distance_km < 1.0:
+        return "{:3.0}m".format(distance_km*1000)
+    else:
+        return "{:3.1}km".format(distance_km)
 
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
@@ -47,7 +52,8 @@ def dashboard_entry(cmdr, is_beta, entry):
                 ( this.target['lat'], this.target['lon']),
                 height = entry['Altitude'],
                 radius = 605) # Ick - hard-coded for Kumay for now
-            this.current_distance.set(info['distance'])
+
+            this.current_distance.set(format_distance(info['distance']))
             this.target_heading.set( info['heading'] )
 
 def waypoint_change(a, b, c):
@@ -84,8 +90,8 @@ def plugin_app(parent):
     this.target_heading = tk.DoubleVar()
     tk.Label(this.status_frame, textvariable=this.target_heading).grid(row=h.row(), column=h.col(), sticky=tk.W)
     # Distance
-    tk.Label(this.status_frame, text="Distance (km)").grid(row=h.row(), column=h.col(), sticky=tk.W)
-    this.current_distance = tk.DoubleVar()
+    tk.Label(this.status_frame, text="Distance").grid(row=h.row(), column=h.col(), sticky=tk.W)
+    this.current_distance = tk.StringVar()
     tk.Label(this.status_frame, textvariable=this.current_distance).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
     return this.status_frame
