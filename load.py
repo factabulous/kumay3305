@@ -40,9 +40,9 @@ def plugin_stop():
 
 def format_distance(distance_km):
     if distance_km < 1.0:
-        return "{:3.0}m".format(distance_km*1000)
+        return "{:3.0f}m".format(distance_km*1000)
     else:
-        return "{:3.1}km".format(distance_km)
+        return "{:3.1f}km".format(distance_km)
 
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
