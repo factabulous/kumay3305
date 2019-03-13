@@ -32,6 +32,7 @@ this.waypoints = Waypoints(local_file("waypoints.json"))
 
 def plugin_start():
     this.selected_waypoint = config.get("Kumay3305.target_waypoint")
+    print("Read selected_waypoint as {}".format(this.selected_waypoint))
     return "Kumay3305"
 
 def plugin_stop():
@@ -53,6 +54,9 @@ def waypoint_change(a, b, c):
     wp = this.waypoints.info(this.target_waypoint.get())
     if wp:
         this.target = wp
+        this.selected_waypoint = this.target_waypoint.get()
+        config.set("Kumay3305.target_waypoint", this.selected_waypoint)
+        print("Setting selected_waypoint to {}".format(this.selected_waypoint))
     else:
         print("[kumay3305] Failed to detect waypoint from {}".format(this.target_waypoint.get()))
 
@@ -80,7 +84,7 @@ def plugin_app(parent):
     this.target_heading = tk.DoubleVar()
     tk.Label(this.status_frame, textvariable=this.target_heading).grid(row=h.row(), column=h.col(), sticky=tk.W)
     # Distance
-    tk.Label(this.status_frame, text="Distance").grid(row=h.row(), column=h.col(), sticky=tk.W)
+    tk.Label(this.status_frame, text="Distance (km)").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.current_distance = tk.DoubleVar()
     tk.Label(this.status_frame, textvariable=this.current_distance).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
