@@ -37,7 +37,7 @@ for line in lines[1:]:
                 if len(fields[4].strip()) > 0:
                     e['lon'] = fields[4] 
 
-with open("waypoints2.json", "wt") as wp_file:
+with open("waypoints.json", "wt") as wp_file:
     json.dump(route, wp_file, indent=2)
 
 
