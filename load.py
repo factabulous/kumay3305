@@ -2,6 +2,7 @@
 
 import os
 import Tkinter as tk
+import ttk
 import myNotebook as nb
 from config import config
 import sys
@@ -81,7 +82,10 @@ def plugin_app(parent):
     this.target_waypoint = tk.StringVar()
     this.target_waypoint.set(this.selected_waypoint)
     this.target_waypoint.trace("w", waypoint_change)
-    tk.OptionMenu(this.status_frame, this.target_waypoint, *this.waypoints.names()).grid(row=h.row(), column=h.col(3), columnspan=3, sticky=tk.W)
+    w = tk.OptionMenu(this.status_frame, this.target_waypoint, *this.waypoints.names())
+    w['highlightthickness'] = 0
+    w['borderwidth'] = 0
+    w.grid(row=h.row(), column=h.col(3), columnspan=3, sticky=tk.W)
     h.newrow()
     # Target Heading
     tk.Label(this.status_frame, text="Heading").grid(row=h.row(), column=h.col(), sticky=tk.W)
