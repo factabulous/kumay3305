@@ -17,17 +17,12 @@ Installation
 ----
 
 Unzip the plugin into EDMCs plugins directory. It appears as a plugin called
-kumay3305-master - there is a settings page to set what you need, and the 
-status should show on the main EDMC page. 
+kumay3305-master. 
 
 Usage
 ----
 
 There is a drop-down to choose the waypoint you want to head towards. 
-Select that and then follow the suggested heading - that's it :)
-
-Third Parties
------
-
-Icons provided by Iconic https://useiconic.com/open
+Select that and then follow the suggested heading while the distance counts
+down to zero - that's it :)
 
