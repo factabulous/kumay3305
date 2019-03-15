@@ -1,252 +1,265 @@
 [
   {
     "description": "The only landable base on Kumay and the start/finish line for our expedition. There's a race track around the base which we can utilise while waiting for everyone to gather.",
-    "name": "Bridger Town",
-    "id": "BT"
+    "id": "BT",
+    "lat": "28.48",
+    "lon": "-53.1956",
+    "name": "Bridger Town"
   },
   {
-    "description": "Possibly our first hurdle after leaving Bridger",
-    "name": "Cinder Toffee Mountain",
+    "description": "The 8km high mountain peak overlooking Bridger Town. An optional climb?",
+    "id": "STL",
+    "lat": "32.8482",
+    "lon": "-53.0123",
+    "name": "The Sentinel"
+  },
+  {
+    "description": "Second peak near Bridger on the route North and part of the optional \"twin peaks\" challenge?",
     "id": "CTM",
-    "lon": "-59.3961",
-    "lat": "38.6801"
-  },
-  {
-    "description": "A pair of flat topped hills resembling the Lithops succulent on the edge of a complex canyon area and next to a crater with a nice central mound.",
-    "name": "The Lithops Mesa",
-    "id": "TLM",
-    "lon": "-85.629",
-    "lat": "48.82"
-  },
-  {
-    "name": "geo site #8",
-    "id": "#8"
+    "lat": "38.3685",
+    "lon": "-56.8423",
+    "name": "Cinder Toffee Mountain"
   },
   {
     "description": "A crater (one of two actually) up on the plain at the start of a red rock canyon complex.",
-    "name": "The Grand Canyon Craters",
     "id": "GCC",
+    "lat": "48.1",
     "lon": "-65.7",
-    "lat": "48.1"
+    "name": "The Grand Canyon Craters"
   },
   {
-    "name": "geo site #6",
-    "id": "#6"
+    "id": "#8",
+    "name": "geo site #8"
+  },
+  {
+    "description": "A pair of flat topped hills resembling the Lithops succulent on the edge of a complex canyon area and next to a crater with a nice central mound.",
+    "id": "TLM",
+    "lat": "48.82",
+    "lon": "-85.629",
+    "name": "The Lithops Mesa"
+  },
+  {
+    "id": "#6",
+    "name": "geo site #6"
   },
   {
     "description": "A blue stain like a wide dry river bed across red desert, shallow crater at the end",
-    "name": "Coluber's Folly",
     "id": "CLF",
+    "lat": "67.3343",
     "lon": "-59.1108",
-    "lat": "67.3343"
+    "name": "Coluber's Folly"
   },
   {
     "description": "Nice blue cliff lined valley",
-    "name": "Blue Cliff Valley",
     "id": "BCV",
+    "lat": "62.32",
     "lon": "-45.44",
-    "lat": "62.32"
+    "name": "Blue Cliff Valley"
   },
   {
     "description": "A blue bottomed valley cutting through red dessert landscape which leads to a larger pair of heart shaped blue basins.",
-    "name": "Blue Vein Valley",
     "id": "BVV",
+    "lat": "61.1",
     "lon": "-32.7",
-    "lat": "61.1"
+    "name": "Blue Vein Valley"
   },
   {
     "description": "Crater, heading from Blue Vein Valley to North Pole",
-    "name": "North Route One",
     "id": "NR1",
+    "lat": "65.5458",
     "lon": "-4.7783",
-    "lat": "65.5458"
+    "name": "North Route One"
   },
   {
-    "description": "blue valley complex",
-    "name": "North Route Two",
+    "description": "Co-ordinates to be changed >>>>",
     "id": "NR2",
+    "lat": "68.61",
     "lon": "-0.608",
-    "lat": "68.61"
+    "name": "North Route Two"
   },
   {
-    "description": "Crater beside blue valley complex",
-    "name": "North Route Three",
+    "description": "Co-ordinates to be changed >>>>",
     "id": "NR3",
+    "lat": "73.2358",
     "lon": "1",
-    "lat": "73.2358"
+    "name": "North Route Three"
   },
   {
-    "description": "End of blue valley with yellow mountains ahead",
-    "name": "North Route Four",
+    "description": "Co-ordinates to be changed >>>>",
     "id": "NR4",
+    "lat": "74.04",
     "lon": "0.42",
-    "lat": "74.04"
+    "name": "North Route Four"
   },
   {
-    "description": "Double crater, next stop the North Pole",
-    "name": "North Route Five",
-    "id": "NR5",
-    "lon": "-8.7737",
-    "lat": "79.4492"
+    "id": "NR5 (new)",
+    "name": "North Route Five"
   },
   {
     "description": "The 7km high peak of a range of sulphurous mountains which form the \"fire\" half of the \"Fire and Ice\" mountains.",
-    "name": "Sulphur Peak",
     "id": "SP",
+    "lat": "80.3772",
     "lon": "33.0526",
-    "lat": "80.3772"
+    "name": "Sulphur Peak"
   },
   {
-    "name": "The North Pole",
-    "id": "TNP"
+    "id": "TNP",
+    "name": "The North Pole"
   },
   {
     "description": "Huge peak, at least 4.5 km above ground level. The  peak is so massive, it creates its own dark side.",
-    "name": "Manaslu peak",
     "id": "MSP",
+    "lat": "80.1958",
     "lon": "99.9583",
-    "lat": "80.1958"
+    "name": "Manaslu peak"
   },
   {
     "description": "Chain of mountains of various heights and colouring.",
-    "name": "Raccoon Ridge",
     "id": "RCR",
+    "lat": "68.9102",
     "lon": "130.3748",
-    "lat": "68.9102"
+    "name": "Raccoon Ridge"
   },
   {
     "description": "A shallow valley of rolling light powder blue",
-    "name": "Blue Powder Gap",
     "id": "BPG",
+    "lat": "64.7128",
     "lon": "124.0007",
-    "lat": "64.7128"
+    "name": "Blue Powder Gap"
   },
   {
     "description": "Basically a ramp jump over the O'Donnell settlement. Definitely a thing that will have to be done!",
-    "name": "The O'Donnell Leap",
     "id": "ODL",
-    "lon": "131.8",
-    "lat": "48.1"
+    "lat": "48.1373",
+    "lon": "131.7676",
+    "name": "The O'Donnell Leap"
   },
   {
     "description": "Area of dark treacherous foothills which may have to be crossed enroute to/from O'Donnell",
-    "name": "The Jumble",
     "id": "TJB",
+    "lat": "33.7194",
     "lon": "127.9442",
-    "lat": "33.7194"
+    "name": "The Jumble"
   },
   {
-    "name": "geo site #14",
-    "id": "#14"
+    "id": "#14",
+    "name": "geo site #14"
   },
   {
     "description": "A mess of ravines centered around a circular canyon with \"kitten like\" ears. On the way from #14 to Claw Ridge.",
-    "name": "Kitten Face Vale",
     "id": "KFV",
+    "lat": "29",
     "lon": "135",
-    "lat": "29"
+    "name": "Kitten Face Vale"
   },
   {
     "description": "Claw shaped series of valleys, halfway to the Cliffs of Insanity.",
-    "name": "Claw Ridge",
     "id": "CRG",
+    "lat": "14.2",
     "lon": "141.6",
-    "lat": "14.2"
+    "name": "Claw Ridge"
   },
   {
     "description": "~6km high range of fairly gnarly mountains 500km South of O'Donnel",
-    "name": "The Cliffs Of Insanity",
     "id": "TCI",
+    "lat": "-1.8148",
     "lon": "132.4699",
-    "lat": "-1.8148"
+    "name": "The Cliffs Of Insanity"
   },
   {
     "description": "An extensive area of clay red canyons and craters",
-    "name": "The Tusken Wastes",
     "id": "TTW",
+    "lat": "-17.171",
     "lon": "118.666",
-    "lat": "-17.171"
+    "name": "The Tusken Wastes"
   },
   {
     "description": "Very large crater with with small crater and mound plus many features.",
-    "name": "Horseshoe Crater",
     "id": "HSC",
+    "lat": "-37.46",
     "lon": "114.23",
-    "lat": "-37.46"
+    "name": "Horseshoe Crater"
   },
   {
     "description": "Small deep crater with steep center mound",
-    "name": "Dewdrop Crater",
     "id": "DDC",
+    "lat": "-47.81",
     "lon": "92.4",
-    "lat": "-47.81"
+    "name": "Dewdrop Crater"
   },
   {
     "description": "Mountains separated by a yellow plain",
-    "name": "Buttercup Mountains",
     "id": "BCM",
+    "lat": "-49.15",
     "lon": "83.75",
-    "lat": "-49.15"
+    "name": "Buttercup Mountains"
   },
   {
     "description": "Narrow and deep (1-1.5 km) canyon running S-SW of the BCM and cutting through some large craters",
-    "name": "The Naga Canyon",
     "id": "TNG",
+    "lat": "-54.81",
     "lon": "72.68",
-    "lat": "-54.81"
+    "name": "The Naga Canyon"
   },
   {
-    "name": "The South Pole",
-    "id": "TSP"
+    "id": "TSP",
+    "name": "The South Pole"
   },
   {
     "description": "Field of earily lit craters in the dark near the South pole",
-    "name": "The Southern Ghosts",
     "id": "TSG",
+    "lat": "-83.0297",
     "lon": "-32.912",
-    "lat": "-83.0297"
+    "name": "The Southern Ghosts"
   },
   {
-    "name": "geo site #11",
-    "id": "#11"
+    "id": "#11",
+    "name": "geo site #11"
   },
   {
-    "name": "geo site #16",
-    "id": "#16"
+    "id": "#16",
+    "name": "geo site #16"
+  },
+  {
+    "description": "Thrilling stretch of dark flat bottomed canyons on the route from #16 to Knievel's Jump.",
+    "id": "BCN",
+    "lat": "-56.7507",
+    "lon": "-73.3991",
+    "name": "Beggar's Canyon"
   },
   {
     "description": "A reasonably narrow canyon to jump across.",
-    "name": "Knievel's Jump",
     "id": "KNJ",
+    "lat": "-50.3293",
     "lon": "-70.2017",
-    "lat": "-50.3293"
+    "name": "Knievel's Jump"
   },
   {
     "description": "around 235km from Geological #16 and 370km to GFC. One of many canyons in the area. Heading here from #16 and then to GrimFaceCrater ensures most interesting terrain along the way.",
-    "name": "ZigZag Point",
     "id": "ZZP",
+    "lat": "-41.24",
     "lon": "-85.97",
-    "lat": "-41.24"
+    "name": "ZigZag Point"
   },
   {
     "description": "Very large crater with an interesting valley cutting through it",
-    "name": "Grim Face Crater",
     "id": "GFC",
+    "lat": "-12.92",
     "lon": "-60.29",
-    "lat": "-12.92"
+    "name": "Grim Face Crater"
   },
   {
     "description": "Shallow crater with bright spots and nice central mound at the Northern end of the canyon complex halfway between Grim Face Crater and The Termite Mound.",
-    "name": "The Corona Basin",
     "id": "TCB",
+    "lat": "1.5452",
     "lon": "-60.7697",
-    "lat": "1.5452"
+    "name": "The Corona Basin"
   },
   {
     "description": "Classic nipple in the middle of a medium size pink crater in the middle of a large hot pink desert",
-    "name": "The Termite Mound",
     "id": "TTM",
+    "lat": "13.0019",
     "lon": "-61.0909",
-    "lat": "13.0019"
+    "name": "The Termite Mound"
   }
 ]

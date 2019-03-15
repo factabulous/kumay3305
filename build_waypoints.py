@@ -38,7 +38,7 @@ for line in lines[1:]:
                     e['lon'] = fields[4] 
 
 with open("waypoints.json", "wt") as wp_file:
-    json.dump(route, wp_file, indent=2)
+    json.dump(route, wp_file, indent=2, sort_keys=True)
 
 
 
