@@ -90,7 +90,7 @@ def plugin_app(parent):
     h = GridHelper()
     this.status_frame = tk.Frame(parent)
 
-    vcheck = version.Version("kumay3305")
+    vcheck = version.Version("kumay3305", "https://raw.githubusercontent.com/factabulous/kumay3305/master/VERSION.md")
     if vcheck.is_new_version():
         HyperlinkLabel(this.status_frame, url="https://github.com/factabulous/kumay3305", text="New Kumay3305 version available! Click here").grid(row=h.row(), column=h.col(4), columnspan=4)
         h.newrow()
