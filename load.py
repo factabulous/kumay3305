@@ -10,6 +10,7 @@ import plug
 import heading
 import version
 import waypoints
+import rate
 from sys import platform
 from util import GridHelper, debug, error
 from ttkHyperlinkLabel import HyperlinkLabel
@@ -18,6 +19,7 @@ from waypoints import Waypoints
 this = sys.modules[__name__]	# For holding module globals
 
 this.target = None
+this.rate = rate.Rate()
 
 #this.debug = True if platform == 'darwin' else False
 this.NO_VALUE = "---" # Used when we don't have a value for a field
@@ -44,6 +46,18 @@ def format_distance(distance_km):
     else:
         return "{:3.1f}km".format(distance_km)
 
+def update_remaining_time():
+    t = this.rate.remaining_secs()
+    if not t:
+        this.remaining_time.set('Unknown')
+    else:
+        if t < 60: 
+            this.remaining_time.set("{} seconds".format(t))
+        elif t < 3600:
+            this.remaining_time.set("{} mins {} secs".format(t//60, t % 60t))
+        else:
+            this.remaining_time.set("{}:{}:{} H:M:S".format(t//3600, (t % 3600)// 60, t % 60))
+
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
         if hasattr(this, 'target'):
@@ -54,8 +68,10 @@ def dashboard_entry(cmdr, is_beta, entry):
                     height = entry['Altitude'],
                     radius = 605) # Ick - hard-coded for Kumay for now
 
+            this.rate.progress(info['distance'], time.time())
             this.current_distance.set(format_distance(info['distance']))
             this.target_heading.set( info['heading'] )
+            update_remaining_time()
 
 def waypoint_change(a, b, c):
     wp = this.waypoints.info(this.target_waypoint.get())
@@ -64,6 +80,7 @@ def waypoint_change(a, b, c):
         this.selected_waypoint = this.target_waypoint.get()
         config.set("Kumay3305.target_waypoint", this.selected_waypoint)
         this.current_distance.set('---')
+        this.rate = rate.Rate()
 
 def plugin_app(parent):
     """
@@ -95,6 +112,10 @@ def plugin_app(parent):
     tk.Label(this.status_frame, text="Distance").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.current_distance = tk.StringVar()
     tk.Label(this.status_frame, textvariable=this.current_distance).grid(row=h.row(), column=h.col(), sticky = tk.W)
+    h.newrow()
+    tk.Label(this.status_frame, text="Remaining Time").grid(row=h.row(), column=h.col(), sticky=tk.W)
+    this.remaining_time = tk.StringVar()
+    tk.Label(this.status_frame, textvariable=this.remaining_time).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
     return this.status_frame
 
