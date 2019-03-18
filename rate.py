@@ -15,12 +15,13 @@ class Rate():
         self._end_distance = None
         self._last_report = None
 
-    def progress(self, distance, timestamp = time.time()):
+    def progress(self, distance, timestamp = None):
         """
         Sets the progress that we have made - the remaining distance
         and the current timestamp (like returned by time.time() - a float 
         second count)
         """
+        timestamp = self._init_time(timestamp)
         if not self._start_timestamp:
             self._start_timestamp = timestamp
         if not self._start_distance:
@@ -28,11 +29,17 @@ class Rate():
         self._end_timestamp = timestamp
         self._end_distance = distance
 
-    def remaining_secs(self, asked_at=time.time()):
+    def _init_time(self, at):
+        if at:
+            return at
+        return time.time()
+
+    def remaining_secs(self, asked_at=None):
         """
         Number of seconds remaining. Can be None. asked_at allows
         for call time to be overridden for tests
         """
+        asked_at = self._init_time(asked_at)
         self._last_report = asked_at
         if not self._start_timestamp:
             return None
@@ -43,17 +50,18 @@ class Rate():
         r = t / d
         return int((r * self._end_distance))
 
-    def need_update(self, asked_at=time.time()):
+    def need_update(self, asked_at=None):
         """
         Call this method to find out if the results need to be updated - 
         if we have had reports and either have not reported or not reported 
         recently, then we will report
         """
+        asked_at = self._init_time(asked_at)
         if not self._start_timestamp:
             return False
         if not self._last_report:
             return True
-        return asked_at - self._last_report > 20.0
+        return asked_at - self._last_report > 5.0
         
 
 

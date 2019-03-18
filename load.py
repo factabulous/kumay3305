@@ -19,7 +19,7 @@ from waypoints import Waypoints
 this = sys.modules[__name__]	# For holding module globals
 
 this.target = None
-this.rate = rate.Rate()
+this._rate = rate.Rate()
 
 #this.debug = True if platform == 'darwin' else False
 this.NO_VALUE = "---" # Used when we don't have a value for a field
@@ -35,6 +35,8 @@ this.waypoints = Waypoints(local_file("waypoints.json"))
 
 def plugin_start():
     this.selected_waypoint = config.get("Kumay3305.target_waypoint")
+    if this.selected_waypoint:
+        this.target = this.waypoints.info(this.selected_waypoint)
     return "Kumay3305"
 
 def plugin_stop():
@@ -47,31 +49,33 @@ def format_distance(distance_km):
         return "{:3.1f}km".format(distance_km)
 
 def update_remaining_time():
-    t = this.rate.remaining_secs()
+    t = this._rate.remaining_secs()
     if not t:
         this.remaining_time.set('Unknown')
     else:
         if t < 60: 
-            this.remaining_time.set("{} seconds".format(t))
+            this.remaining_time.set("soon")
         elif t < 3600:
-            this.remaining_time.set("{} mins {} secs".format(t//60, t % 60, t))
+            this.remaining_time.set("{}:{} M:S".format(t//60, t % 60, t))
         else:
             this.remaining_time.set("{}:{}:{} H:M:S".format(t//3600, (t % 3600)// 60, t % 60))
 
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
         if hasattr(this, 'target'):
-            if 'lat' in this.target:
+            if this.target and 'lat' in this.target:
                 info = heading.target_info( 
                     ( entry['Latitude'], entry['Longitude']), 
                     ( this.target['lat'], this.target['lon']),
                     height = entry['Altitude'],
                     radius = 605) # Ick - hard-coded for Kumay for now
 
-            this.rate.progress(info['distance'], time.time())
-            this.current_distance.set(format_distance(info['distance']))
-            this.target_heading.set( info['heading'] )
-            update_remaining_time()
+                this.current_distance.set(format_distance(info['distance']))
+                this.target_heading.set( info['heading'] )
+
+                this._rate.progress(info['distance'])
+                if this._rate.need_update():
+                    update_remaining_time()
 
 def waypoint_change(a, b, c):
     wp = this.waypoints.info(this.target_waypoint.get())
@@ -80,7 +84,7 @@ def waypoint_change(a, b, c):
         this.selected_waypoint = this.target_waypoint.get()
         config.set("Kumay3305.target_waypoint", this.selected_waypoint)
         this.current_distance.set('---')
-        this.rate = rate.Rate()
+        this._rate = rate.Rate()
 
 def plugin_app(parent):
     """
