@@ -9,8 +9,8 @@
   {
     "description": "The 8km high mountain peak overlooking Bridger Town. An optional climb?",
     "id": "STL",
-    "lat": "32.8482",
-    "lon": "-53.0123",
+    "lat": "30.858",
+    "lon": "-50.0152",
     "name": "The Sentinel"
   },
   {
@@ -71,24 +71,24 @@
     "name": "North Route One"
   },
   {
-    "description": "Co-ordinates to be changed >>>>",
+    "description": "Valley floor",
     "id": "NR2",
-    "lat": "68.61",
-    "lon": "-0.608",
+    "lat": "71.06",
+    "lon": "2.32",
     "name": "North Route Two"
   },
   {
-    "description": "Co-ordinates to be changed >>>>",
+    "description": "Old crater peak",
     "id": "NR3",
-    "lat": "73.2358",
-    "lon": "1",
+    "lat": "72.78",
+    "lon": "3.7",
     "name": "North Route Three"
   },
   {
-    "description": "Co-ordinates to be changed >>>>",
+    "description": "Wide flat valley area",
     "id": "NR4",
-    "lat": "74.04",
-    "lon": "0.42",
+    "lat": "74.47",
+    "lon": "4.02",
     "name": "North Route Four"
   },
   {
@@ -235,11 +235,19 @@
     "name": "Knievel's Jump"
   },
   {
+    "id": "#24",
+    "name": ""
+  },
+  {
     "description": "around 235km from Geological #16 and 370km to GFC. One of many canyons in the area. Heading here from #16 and then to GrimFaceCrater ensures most interesting terrain along the way.",
     "id": "ZZP",
     "lat": "-41.24",
     "lon": "-85.97",
-    "name": "ZigZag Point"
+    "name": "ZigZag Point (optional detour)"
+  },
+  {
+    "id": "#23",
+    "name": ""
   },
   {
     "description": "Very large crater with an interesting valley cutting through it",
