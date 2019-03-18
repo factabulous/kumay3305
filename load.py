@@ -56,9 +56,9 @@ def update_remaining_time():
         if t < 60: 
             this.remaining_time.set("soon")
         elif t < 3600:
-            this.remaining_time.set("{}:{} M:S".format(t//60, t % 60, t))
+            this.remaining_time.set("{}:{:02d} M:S".format(t//60, t % 60, t))
         else:
-            this.remaining_time.set("{}:{}:{} H:M:S".format(t//3600, (t % 3600)// 60, t % 60))
+            this.remaining_time.set("{}:{:02d}:{:02d} H:M:S".format(t//3600, (t % 3600)// 60, t % 60))
 
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
