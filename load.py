@@ -90,6 +90,8 @@ def waypoint_change(a, b, c):
         this.selected_waypoint = this.target_waypoint.get()
         config.set("Kumay3305.target_waypoint", this.selected_waypoint)
         this.current_distance.set('---')
+        if 'next' in wp:
+            this.next_waypoint.set(wp['next'])
         this._rate = rate.Rate()
 
 def plugin_app(parent):
@@ -126,6 +128,12 @@ def plugin_app(parent):
     tk.Label(this.status_frame, text="Remaining Time").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.remaining_time = tk.StringVar()
     tk.Label(this.status_frame, textvariable=this.remaining_time).grid(row=h.row(), column=h.col(), sticky = tk.W)
+    tk.Label(this.status_frame, text="Next WP").grid(row=h.row(), column=h.col(), sticky=tk.W)
+    this.next_waypoint = tk.StringVar()
+    if this.target and 'next' in this.target:
+        this.next_waypoint.set(this.target['next'])
+
+    tk.Label(this.status_frame, textvariable=this.next_waypoint).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
     return this.status_frame
 
