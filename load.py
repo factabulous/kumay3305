@@ -132,12 +132,12 @@ def plugin_app(parent):
     this.next_waypoint = tk.StringVar()
     if this.target and 'next' in this.target:
         this.next_waypoint.set(this.target['next'])
+    tk.Label(this.status_frame, textvariable=this.next_waypoint).grid(row=h.row(), column=h.col(), sticky = tk.W)
     # ----
-    tk.Label(this.status_frame, text="Remaining Time").grid(row=h.row(), column=h.col(), sticky=tk.W)
+    tk.Label(this.status_frame, text="E.T.A.").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.remaining_time = tk.StringVar()
     tk.Label(this.status_frame, textvariable=this.remaining_time).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
-    tk.Label(this.status_frame, textvariable=this.next_waypoint).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
     return this.status_frame
 
