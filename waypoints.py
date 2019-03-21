@@ -20,6 +20,21 @@ class Waypoints():
         """
         return [ x['name'] for x in self._waypoints ]
 
+    def update_crash_location(self, loc):
+        """
+        Waypoints can contain a location where an SRV crash happened, so 
+        you can navigate back to it. This method updates that - the 
+        loc is a (lat, long) tuple.
+        """
+        SRV_CRASH_NAME = "Last SRV Crash"
+        existing = self.info(SRV_CRASH_NAME)
+        if existing: 
+            existing['lat'] = loc[0]
+            existing['lon'] = loc[1]
+        else:
+            self._waypoints.append( { 'name': SRV_CRASH_NAME, 'lat': loc[0], 'lon': loc[1] } )
+        
+
     def info(self, name):
         """
         Returns all the info we have about a waypoint - specified

@@ -20,6 +20,7 @@ this = sys.modules[__name__]	# For holding module globals
 
 this.target = None
 this._rate = rate.Rate()
+this._location = None # Normally the last known lat lon in a tuple
 
 #this.debug = True if platform == 'darwin' else False
 this.NO_VALUE = "---" # Used when we don't have a value for a field
@@ -37,6 +38,10 @@ def plugin_start():
     this.selected_waypoint = config.get("Kumay3305.target_waypoint")
     if this.selected_waypoint:
         this.target = this.waypoints.info(this.selected_waypoint)
+    
+    crash_loc = config.get("Kumay3305.crash_location")
+    if crash_loc:
+        this.waypoints.update_crash_location(json.loads(crash_loc))
     return "Kumay3305"
 
 def plugin_stop():
@@ -62,10 +67,11 @@ def update_remaining_time():
 
 def dashboard_entry(cmdr, is_beta, entry):
     if 'Latitude' in entry and 'Longitude' in entry:
+        this._location = ( entry['Latitude'], entry['Longitude'])
         if hasattr(this, 'target'):
             if this.target and 'lat' in this.target:
                 info = heading.target_info( 
-                    ( entry['Latitude'], entry['Longitude']), 
+                    this._location,
                     ( this.target['lat'], this.target['lon']),
                     height = entry['Altitude'],
                     radius = 605) # Ick - hard-coded for Kumay for now
@@ -125,8 +131,11 @@ def plugin_app(parent):
 
 def journal_entry(cmdr, is_beta, system, station, entry, state):
     """
-    We do nothing with the journal - I guess we could track material 
-    usage and warn when low on synth mats?
+    Look for SRV descruction and record it so we can add it to the navigation
+    locations
     """
-    pass 
+    if not is_beta and entry['event'] == 'SRVDestroyed' and this._location:
+        config.set("Kumay3305.crash_location", json.dumps(this._location))
+        this.waypoints.update_crash_location(this._location)
+        
 

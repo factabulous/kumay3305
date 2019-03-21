@@ -19,5 +19,12 @@ class WaypointsTest(unittest.TestCase):
         waypoints = Waypoints()
         self.assertTrue( len(waypoints.names()) > 5)
 
+    def test_adding_srv_crash(self):
+        waypoints = Waypoints()
+        num_waypoints = len(waypoints.names())
+        waypoints.update_crash_location( ( 12, 56) )
+        self.assertEqual( num_waypoints + 1, len(waypoints.names()))
+        
+
 if __name__ == "__main__":
     unittest.main()
