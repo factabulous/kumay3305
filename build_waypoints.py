@@ -19,8 +19,8 @@ lines = r.text.split("\n")
 route = []
 for line in lines[1:]:
     fields = line.split("\t")
-    if len(fields) >= 2:
-        route.append({"id": fields[0], "name": fields[1]})
+    if len(fields) >= 3:
+        route.append({"id": fields[0], "name": fields[1], "next":fields[2]})
 
 r = requests.get(MAIN_URL)
 lines = r.text.split("\n")
