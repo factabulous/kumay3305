@@ -6,7 +6,11 @@ in Chi Hercules for the Kumay 3305 First Great Planetary Expedition in
 Elite Dangerous http://buckyballracing.org.uk/kumay.html
 
 Choose the waypoint you want to get to and it will display the bearing to take
-and the distance to the waypoint. 
+and the distance to the waypoint. It also displays the next waypoint, select 
+that from the dropdown when you get there.
+
+There is also a feature so that the plugin remembers where you die in your SRV,
+you can select the XSRV waypoint to take you back.
 
 Prerequistes
 ----
