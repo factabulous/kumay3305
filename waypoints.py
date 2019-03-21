@@ -18,7 +18,7 @@ class Waypoints():
         """
         Returns the names of the waypoints in order
         """
-        return [ x['name'] for x in self._waypoints ]
+        return [ ' '.join( (x['id'], x['name'])) for x in self._waypoints ]
 
     def update_crash_location(self, loc):
         """
@@ -32,7 +32,7 @@ class Waypoints():
             existing['lat'] = loc[0]
             existing['lon'] = loc[1]
         else:
-            self._waypoints.append( { 'name': SRV_CRASH_NAME, 'lat': loc[0], 'lon': loc[1] } )
+            self._waypoints.append( { 'id': 'XSRV', 'name': SRV_CRASH_NAME, 'lat': loc[0], 'lon': loc[1] } )
         
 
     def info(self, name):
@@ -41,7 +41,7 @@ class Waypoints():
         by name. Will return None if not found.
         """
         for wp in self._waypoints:
-            if wp['name'] == name:
+            if ' '.join(( wp['id'], wp['name'])) == name:
                 return wp
         return None
 
