@@ -10,8 +10,8 @@ import collections
 
 class Rate():
     def __init__(self):
-        self._WINDOW_SECS = 60
-        self._REPORT_INTERVAL_SECS = 5
+        self._WINDOW_SECS = 60 # How long we consider data for rate calc
+        self._REPORT_INTERVAL_SECS = 5 # How often we record the data
         self._reports = collections.deque([], self._WINDOW_SECS // self._REPORT_INTERVAL_SECS)
         self._last_report = None
 
