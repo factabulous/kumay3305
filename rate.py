@@ -6,13 +6,13 @@ and the time, and works out when we will get to the destination
 """
 
 import time
+import collections
 
 class Rate():
     def __init__(self):
-        self._start_timestamp = None
-        self._end_timestamp = None
-        self._start_distance = None
-        self._end_distance = None
+        self._WINDOW_SECS = 60
+        self._REPORT_INTERVAL_SECS = 5
+        self._reports = collections.deque([], self._WINDOW_SECS // self._REPORT_INTERVAL_SECS)
         self._last_report = None
 
     def progress(self, distance, timestamp = None):
@@ -22,12 +22,11 @@ class Rate():
         second count)
         """
         timestamp = self._init_time(timestamp)
-        if not self._start_timestamp:
-            self._start_timestamp = timestamp
-        if not self._start_distance:
-            self._start_distance = distance
-        self._end_timestamp = timestamp
-        self._end_distance = distance
+        if not self._reports or self._reports[-1][0] < timestamp - self._REPORT_INTERVAL_SECS:
+            self._reports.append( ( timestamp, distance) )
+        if self._reports:
+            while self._reports[0][0] < timestamp - self._WINDOW_SECS:
+                self._reports.popleft()
 
     def _init_time(self, at):
         if at:
@@ -41,14 +40,14 @@ class Rate():
         """
         asked_at = self._init_time(asked_at)
         self._last_report = asked_at
-        if not self._start_timestamp:
+        if not len(self._reports) > 1: 
             return None
-        if self._end_distance >= self._start_distance:
+        if self._reports[0][1] <= self._reports[-1][1]:
             return None
-        t = self._end_timestamp - self._start_timestamp
-        d = self._start_distance - self._end_distance
+        t = self._reports[-1][0] - self._reports[0][0]
+        d = self._reports[0][1] - self._reports[-1][1]
         r = t / d
-        return int((r * self._end_distance))
+        return int((r * self._reports[-1][1]))
 
     def need_update(self, asked_at=None):
         """
@@ -57,7 +56,7 @@ class Rate():
         recently, then we will report
         """
         asked_at = self._init_time(asked_at)
-        if not self._start_timestamp:
+        if not len(self._reports) > 1:
             return False
         if not self._last_report:
             return True
