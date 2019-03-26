@@ -11,6 +11,7 @@ import heading
 import version
 import waypoints
 import rate
+import json
 from sys import platform
 from util import GridHelper, debug, error
 from ttkHyperlinkLabel import HyperlinkLabel
