@@ -266,8 +266,8 @@
   {
     "description": "A reasonably narrow canyon to jump across.",
     "id": "KNJ",
-    "lat": "-50.3293",
-    "lon": "-70.2017",
+    "lat": "-50.1221",
+    "lon": "-70.0577",
     "name": "Knievel's Jump",
     "next": "#24"
   },
