@@ -144,7 +144,7 @@ def plugin_app(parent):
 
 def journal_entry(cmdr, is_beta, system, station, entry, state):
     """
-    Look for SRV descruction and record it so we can add it to the navigation
+    Look for SRV destruction and record it so we can add it to the navigation
     locations
     """
     if not is_beta and entry['event'] == 'SRVDestroyed' and this._location:
