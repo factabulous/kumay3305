@@ -138,6 +138,11 @@ def plugin_app(parent):
     tk.Label(this.status_frame, text="E.T.A.").grid(row=h.row(), column=h.col(), sticky=tk.W)
     this.remaining_time = tk.StringVar()
     tk.Label(this.status_frame, textvariable=this.remaining_time).grid(row=h.row(), column=h.col(), sticky = tk.W)
+    # ----
+    h.newrow()
+    tk.Label(this.status_frame, text="% trip").grid(row=h.row(), column=h.col(), sticky=tk.W)
+    this.remaining_distance = tk.StringVar()
+    tk.Label(this.status_frame, textvariable=this.remaining_distance).grid(row=h.row(), column=h.col(), sticky = tk.W)
 
 
     return this.status_frame
