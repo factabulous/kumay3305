@@ -15,8 +15,8 @@ class Waypoints():
                     k['lat'] = float(k['lat'])
                 if 'lon' in k:
                     k['lon'] = float(k['lon'])
+        self._total_distance = None
 
-            #self._total_distance = self.remaining_distance(self._waypoints[0]['id'])
 
     def total_distance(self):
         """
@@ -24,6 +24,8 @@ class Waypoints():
         same point again (linked by the 'next' field and ignoring any
         without lat/lon information
         """
+        if not self._total_distance:
+            self._total_distance = self.remaining_distance(self._waypoints[0]['id'])
         return self._total_distance
 
     def remaining_distance(self, id_):
@@ -38,7 +40,6 @@ class Waypoints():
         while more_to_do:
             # Assumes there will be a path that loops back
             next_ = self.next_navigable(current['id'])
-            print(" current {} next_ {}".format(current, next_))
             dist = dist + heading.great_circle(self.latlon(current['id']), self.latlon(next_['id']), self._radius)
             current = next_
             more_to_do = next_['id'] != end_id

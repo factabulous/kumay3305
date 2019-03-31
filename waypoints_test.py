@@ -30,7 +30,7 @@ class WaypointsTest(unittest.TestCase):
         waypoints.update_crash_location( ( 12, 56) )
         self.assertEqual( num_waypoints + 1, len(waypoints.names()))
 
-    def test_remaining_distance(self):
+    def test_total_distance(self):
         waypoints = Waypoints("waypoints_test.json")
         self.assertEqual(4619.22936857578, waypoints.total_distance())
 
