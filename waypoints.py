@@ -35,11 +35,15 @@ class Waypoints():
         """
         end_id = self._waypoints[0]['id']
         current = self.by_id(id_)
+        if not current:
+            return None
         more_to_do = True
         dist = 0
         while more_to_do:
             # Assumes there will be a path that loops back
             next_ = self.next_navigable(current['id'])
+            if not next_:
+                return None
             dist = dist + heading.great_circle(self.latlon(current['id']), self.latlon(next_['id']), self._radius)
             current = next_
             more_to_do = next_['id'] != end_id
@@ -53,6 +57,7 @@ class Waypoints():
         next_ = self.by_id(self.by_id(id_)['next'])
         if not next_:
             print("*** Failed to find next for {}".format(id_))
+            return None
         while 'lat' not in next_:
             next_ = self.by_id(next_['next'])
         return next_

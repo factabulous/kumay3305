@@ -38,6 +38,7 @@ class WaypointsTest(unittest.TestCase):
         waypoints = Waypoints("waypoints_test.json")
         self.assertEqual(4619.22936857578, waypoints.remaining_distance('BT'))
         self.assertEqual(856.5790562622092, waypoints.remaining_distance('KNJ'))
+        self.assertIsNone(waypoints.remaining_distance('No POI'))
 
 if __name__ == "__main__":
     unittest.main()
