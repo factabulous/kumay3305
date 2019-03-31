@@ -79,6 +79,10 @@ def dashboard_entry(cmdr, is_beta, entry):
 
                 this.current_distance.set(format_distance(info['distance']))
                 this.target_heading.set( info['heading'] )
+                remaining_distance = this.waypoints.remaining_distance(this.target['id'])
+                if remaining_distance:
+                    remaining_distance = remaining_distance + info['distance']
+                    this.remaining_distance.set( "{:3.1f}%".format( 100 * remaining_distance / this.waypoints.total_distance()))
 
                 this._rate.progress(info['distance'])
                 if this._rate.need_update():
