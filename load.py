@@ -82,7 +82,7 @@ def dashboard_entry(cmdr, is_beta, entry):
                 remaining_distance = this.waypoints.remaining_distance(this.target['id'])
                 if remaining_distance:
                     remaining_distance = remaining_distance + info['distance']
-                    this.remaining_distance.set( "{:3.1f}%".format( 100 * remaining_distance / this.waypoints.total_distance()))
+                    this.remaining_distance.set( "{:3.1f}%".format( 100 - 100 * remaining_distance / this.waypoints.total_distance()))
 
                 this._rate.progress(info['distance'])
                 if this._rate.need_update():
@@ -95,6 +95,8 @@ def waypoint_change(a, b, c):
         this.selected_waypoint = this.target_waypoint.get()
         config.set("Kumay3305.target_waypoint", this.selected_waypoint)
         this.current_distance.set('---')
+        this.remaining_time.set("---")
+        this.target_heading.set("---")
         if 'next' in wp:
             this.next_waypoint.set(wp['next'])
         this._rate = rate.Rate()
